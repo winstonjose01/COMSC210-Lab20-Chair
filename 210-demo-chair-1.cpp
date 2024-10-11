@@ -1,3 +1,8 @@
+
+// COMSC210 | Lab 20 | Winston Jose
+// IDE used : Visual Studio Code
+// Github link: https://github.com/winstonjose01/COMSC210-Lab20-Chair
+
 #include <iostream>
 #include <iomanip>
 #include <ctime>
@@ -26,7 +31,6 @@ public:
             prices[i] = (rand() % (MAX - MIN + 1) + MIN) / 100.0;
     }
     Chair(int l, double prices[SIZE]) {
-        //prices = new double[SIZE];
         this->prices = new double[SIZE];
         legs = l;
         for (int i = 0; i < SIZE; i++)
@@ -50,25 +54,28 @@ public:
     }
 
     void print() {
-        cout << "CHAIR DATA - legs: " << legs << endl;
-        cout << "Price history: " ;
+        cout << "\tCHAIR DATA - legs: " << legs << endl;
+        cout << "\tPrice history: " ;
         for (int i = 0; i < SIZE; i++)
             cout << prices[i] << " ";
-        cout << endl << "Historical avg price: " << getAveragePrices();
+        cout << endl << "\tHistorical avg price: " << getAveragePrices();
         cout << endl << endl;
     }
 };
 
 int main() {
+    srand(std::time(0));
     cout << fixed << setprecision(2);
 
     //creating pointer to first chair object
+    cout << "Displaying intial chair object: \n";
     Chair *chairPtr = new Chair;
     chairPtr->setLegs(4);
     chairPtr->setPrices(121.21, 232.32, 414.14);
     chairPtr->print();
 
     //creating dynamic chair object with constructor
+    cout << "Displaying Chair object using parameter constructor: \n";
     double init_prices[3] = {0,0,0};
     Chair *livingChair = new Chair(3, init_prices);
     livingChair->setPrices(525.25, 434.34, 252.52);
@@ -77,14 +84,9 @@ int main() {
     livingChair = nullptr;
 
     //creating dynamic array of chair objects
-    cout << 
+    cout << "Displaying chair collection using default constructor: \n";
     Chair *collection = new Chair[SIZE];
-    //collection[0].setLegs(4);
-    //collection[0].setPrices(441.41, 552.52, 663.63);
-    //collection[1].setLegs(4);
-    //collection[1].setPrices(484.84, 959.59, 868.68);
-    //collection[2].setLegs(4);
-    //collection[2].setPrices(626.26, 515.15, 757.57);
+
     for (int i = 0; i < SIZE; i++)
         collection[i].print();
 
