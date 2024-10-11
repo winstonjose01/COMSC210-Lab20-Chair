@@ -33,7 +33,7 @@
         }
         // Parameterized constructor: sets number of legs and initializes price history with given array
         Chair(int l, double prices[SIZE]) {
-            this->prices = new double[SIZE];
+            this->prices = new double[SIZE];  // Allocate memory for price history array
             legs = l;
             for (int i = 0; i < SIZE; i++)
                 //prices[i] = 0;
@@ -43,18 +43,18 @@
         // setters and getters
         void setLegs(int l)      { legs = l; }
         int getLegs()            { return legs; }
-
+        // Setter for price history: takes individual prices and assigns them to the array
         void setPrices(double p1, double p2, double p3) { 
             prices[0] = p1; prices[1] = p2; prices[2] = p3; 
         }
-
+        // Function to calculate and return the average price from the price history
         double getAveragePrices() {
             double sum = 0;
             for (int i = 0; i < SIZE; i++)
                 sum += prices[i];
             return sum / SIZE;
         }
-
+        // Function to print the chair details
         void print() {
             cout << "\tCHAIR DATA - legs: " << legs << endl;
             cout << "\tPrice history: " ;
